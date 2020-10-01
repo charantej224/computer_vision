@@ -42,10 +42,11 @@ for each in val_dict['annotations']:
     else:
         train_dict['annotations'].append(each)
 
-print("images")
+print(len(test_dict['images']))
+print(len(train_dict['images']))
 
 with open(train_json, 'w') as f:
     json.dump(train_dict, f, indent=2)
 
 with open(test_json, 'w') as f:
-    json.dump(train_dict, f, indent=2)
+    json.dump(test_dict, f, indent=2)

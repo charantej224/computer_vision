@@ -8,7 +8,6 @@ import torch
 class CocoDataset(VisionDataset):
     def __init__(self, root_directory, annotation_dir="annotations/train_2017.json", image_dict="val2017",
                  transforms=None):
-        print(root_directory)
         self.root_directory = root_directory
         self.annotations = read_json_value(os.path.join(root_directory, annotation_dir))
         self.image_path = os.path.join(root_directory, image_dict)
@@ -31,7 +30,7 @@ class CocoDataset(VisionDataset):
         target = {"boxes": boxes, "labels": labels, "image_id": image_id}
         if self.transforms is not None:
             img, target = self.transforms(img, target)
-            
+
         return img, target
 
     def __len__(self):
